@@ -97,6 +97,18 @@
     return "r_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 9);
   }
 
+  function formatKst(date) {
+    var parts = new Intl.DateTimeFormat("ko-KR", {
+      timeZone: "Asia/Seoul",
+      year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit", second: "2-digit",
+      hour12: false
+    }).formatToParts(date);
+    var map = {};
+    parts.forEach(function (p) { map[p.type] = p.value; });
+    return map.year + "-" + map.month + "-" + map.day + " " + map.hour + ":" + map.minute + ":" + map.second;
+  }
+
   function saveDraft() {
     try { localStorage.setItem(LS_DRAFT, JSON.stringify(state)); } catch (e) {}
   }
@@ -369,7 +381,7 @@
     var s = state.survey;
     return {
       id: uid(),
-      submittedAt: new Date().toISOString(),
+      submittedAt: formatKst(new Date()),
       company: s.company || "",
       name: s.name || "",
       email: s.email || "",
@@ -462,7 +474,7 @@
     var failed = getFailedSubmissions();
 
     var rows = failed.map(function (r) {
-      return "<tr><td>" + escapeHtml((r.submittedAt || "").replace("T", " ").slice(0, 16)) + "</td>" +
+      return "<tr><td>" + escapeHtml((r.submittedAt || "").slice(0, 16)) + "</td>" +
         "<td>" + escapeHtml(r.company) + "</td>" +
         "<td>" + escapeHtml(r.name) + "</td>" +
         "<td>" + escapeHtml(r.email) + "</td>" +
@@ -474,9 +486,8 @@
         topbar("", 0, 0) +
         '<div class="content"><div class="card">' +
           '<p class="eyebrow">스태프 전용</p>' +
-          "<h1>응답 현황</h1>" +
-          '<p class="admin-note">모든 응답은 제출과 동시에 구글시트 "7. 설문 이벤트 응답 내용" 시트에 실시간으로 저장됩니다. 아래 버튼으로 구글시트를 열어 실시간 응답 현황을 확인해 주세요.</p>' +
-          '<div class="btn-row" style="margin-top:0;margin-bottom:22px;"><a class="btn btn-primary" id="btn-sheet" href="' + escapeHtml(CONFIG.SHEET_URL || "#") + '" target="_blank" rel="noopener">구글시트 열기</a></div>' +
+          "<h1>저장 실패 응답 확인</h1>" +
+          '<p class="admin-note">전체 응답 현황은 이 화면이 아니라 구글시트에서 확인해 주세요. 여기서는 네트워크 문제로 이 기기에서 저장에 실패한 응답만 다시 전송할 수 있습니다.</p>' +
           (failed.length
             ? '<div class="admin-summary"><span class="num">' + failed.length + '</span><span class="step-label">이 기기에서 저장 실패한 응답</span></div>' +
               '<p class="admin-note">네트워크 문제로 구글시트에 자동 저장되지 못한 응답입니다. 아래 버튼으로 다시 전송을 시도해 주세요.</p>' +
