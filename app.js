@@ -6,7 +6,7 @@
       q: "엠키스코어는 HPE 파트너사입니다. 다음 중 엠키스코어의 HPE 파트너 등급에 해당하는 것은?",
       options: ["플래티넘", "골드", "실버"],
       correct: 0,
-      explain: "엠키스코어는 HPE 파트너 프로그램 내 최상위 등급인 플래티넘 파트너입니다."
+      explain: "엠키스코어는 HPE 파트너 프로그램 내 <strong>최상위 등급인 플래티넘</strong> 파트너입니다."
     },
     {
       q: "대규모 GPU 클러스터 구축 시 고려해야 하는 사항은?",
@@ -27,7 +27,7 @@
       explain: "NIPA 국가 AI 컴퓨팅 센터(1차)는 국내 최대 규모의 B200 GPU 기반 AI 인프라로, 총 7,656장의 GPU를 운영합니다. 이 중 510개 노드로 구성된 단일 클러스터는 4,080장 규모로, 이 역시 국내 최대 규모입니다."
     },
     {
-      q: "세계 슈퍼컴퓨터 순위 TOP500에 이름을 올린 국내 AI 슈퍼컴퓨터 중에는 엠키스코어가 구축한 시스템도 있다. (순위 포함 20위)",
+      q: "세계 슈퍼컴퓨터 순위 TOP500에 이름을 올린 국내 AI 슈퍼컴퓨터 중에는 엠키스코어가 구축한 시스템도 있다.",
       options: ["O", "X"],
       correct: 0,
       explain: "NIPA 국가 AI 컴퓨팅센터의 CL-1은 시스템 성능 효율 87.8%를 선보이며, 2026년 6월 TOP500에서 20위에 등재되었습니다."
@@ -41,40 +41,40 @@
         { key: "company", label: "소속 회사", type: "text", required: true },
         { key: "name", label: "성함", type: "text", required: true },
         { key: "email", label: "이메일", type: "email", required: true, ph: "회사 이메일 주소 입력 부탁드립니다." },
-        { key: "role", label: "담당 업무", type: "text", required: false },
-        { key: "department", label: "부서", type: "text", required: false },
-        { key: "title", label: "직책", type: "text", required: false },
+        { key: "role", label: "담당 업무", type: "text", required: true },
+        { key: "department", label: "부서", type: "text", required: true },
+        { key: "title", label: "직책", type: "text", required: true },
         { key: "phone", label: "휴대전화번호", type: "tel", required: true, ph: "010-1234-5678 형식으로 입력 부탁드립니다." }
       ]
     },
     {
       title: "회사 프로필",
       fields: [
-        { key: "decisionAuthority", label: "의사결정권한", type: "radio", required: false,
+        { key: "decisionAuthority", label: "의사결정권한", type: "radio", required: true,
           options: ["CFO, CEO, COO, CTO", "예산집행 담당", "타부서 리더(팀장급)", "구매부서 팀원", "해당 없음"] },
-        { key: "companySize", label: "회사 규모", type: "radio", required: false,
+        { key: "companySize", label: "회사 규모", type: "radio", required: true,
           options: ["대기업", "중견/중소기업", "스타트업"] },
-        { key: "itBudget", label: "연간 IT 구매 예산 규모", type: "radio", required: false,
+        { key: "itBudget", label: "연간 IT 구매 예산 규모", type: "radio", required: true,
           options: ["100억 원 이상", "50억 원 이상", "30억 원 이상", "20억 원 이상", "10억 원 이상", "5억 원 이상", "3억 원 미만", "1억 원 미만", "모름 또는 없음"] }
       ]
     },
     {
       title: "관심사",
       fields: [
-        { key: "interestAreas", label: "관심 분야 (복수 응답 가능)", type: "checkbox", required: false,
+        { key: "interestAreas", label: "관심 분야 (복수 응답 가능)", type: "checkbox", required: true,
           options: ["연구개발", "데이터 분석 및 활용", "Physical AI", "AI Factory", "생성형 AI", "HPC 및 AI Simulation", "AI 학습 및 추론", "기타"] },
-        { key: "interestProducts", label: "관심 제품 (복수 응답 가능)", type: "checkbox", required: false,
+        { key: "interestProducts", label: "관심 제품 (복수 응답 가능)", type: "checkbox", required: true,
           options: ["8GPU Server (B200, B300)", "Rack 서버 (GB300, Vera Rubin...)", "IB Switch", "RTX Pro 6000 GPU Server", "해당 없음"] }
       ]
     },
     {
       title: "도입 계획",
       fields: [
-        { key: "adoptionIntent", label: "도입의사", type: "radio", required: false,
+        { key: "adoptionIntent", label: "도입의사", type: "radio", required: true,
           options: ["도입의사 있음", "도입의사 없음", "도입 검토중 (구매부서 협의 전)", "미확정 (정보확인 목적)", "미확정 (사전조사 목적)"] },
-        { key: "adoptionTimeline", label: "도입 시점", type: "radio", required: false,
+        { key: "adoptionTimeline", label: "도입 시점", type: "radio", required: true,
           options: ["1~2개월 이내 (긴급도입)", "3개월 이내", "6개월 이내", "1년 이내", "1년 이후", "미정", "계획없음"] },
-        { key: "consult", label: "추후 엠키스코어 영업으로부터 상담을 희망하십니까?", type: "radio", required: false,
+        { key: "consult", label: "추후 엠키스코어 영업으로부터 상담을 희망하십니까?", type: "radio", required: true,
           options: ["예", "아니오"] }
       ]
     }
@@ -131,7 +131,7 @@
   function topbar(labelText, current, total) {
     var pct = total ? Math.round((current / total) * 100) : 0;
     return '<div class="topbar">' +
-      '<div class="topbar-row"><span class="brand">mkiscore <span>·</span> HPE Cray AI 2026</span>' +
+      '<div class="topbar-row"><span class="brand">MKISCORE <span>·</span> HPE Cray AI 2026</span>' +
       (total ? '<span class="step-label">' + escapeHtml(labelText) + " " + current + "/" + total + "</span>" : "") +
       "</div>" +
       (total ? '<div class="progress-track"><div class="progress-fill" style="width:' + pct + '%"></div></div>' : "") +
@@ -155,10 +155,9 @@
         '<div class="content"><div class="card">' +
           '<p class="eyebrow">부스 퀴즈 이벤트</p>' +
           "<h1>국내 최대 규모 AI Factory를 만든 엠키스코어를 퀴즈로 만나보세요</h1>" +
-          '<p class="lede">백월 전시 콘텐츠를 바탕으로 한 5개 문항을 풀고 간단한 설문에 참여하시면, 엠키스코어 스태프에게 기념품을 받아가실 수 있습니다. 소요 시간은 3~5분입니다.</p>' +
+          '<p class="lede">간단한 5개의 퀴즈를 풀고 설문에 참여하시면 100% 기념품을 받으실 수 있습니다.</p>' +
           '<button class="btn btn-primary" id="btn-start">퀴즈 풀고 기념품 받아가세요</button>' +
         "</div></div>" +
-        '<div class="foot-link"><button id="btn-staff" type="button">스태프 화면</button></div>' +
       "</div>"
     ));
     document.getElementById("btn-start").addEventListener("click", function () {
@@ -167,19 +166,16 @@
       saveDraft();
       render();
     });
-    document.getElementById("btn-staff").addEventListener("click", function () {
-      state.screen = "admin";
-      render();
-    });
   }
 
   function renderQuiz() {
     var idx = state.qIndex;
     var item = QUESTIONS[idx];
-    var isAnswered = state.answered[idx];
+    var picked = state.answered[idx];
+    var isAnswered = picked !== false && picked !== undefined && picked !== null;
 
     var optsHtml = item.options.map(function (opt, i) {
-      return '<button class="opt" data-i="' + i + '">' + escapeHtml(opt) + "</button>";
+      return '<button class="opt" data-i="' + i + '"><span class="opt-text">' + escapeHtml(opt) + '</span><span class="opt-tag"></span></button>';
     }).join("");
 
     app.appendChild(el(
@@ -188,48 +184,44 @@
         '<div class="content"><div class="card">' +
           "<h2>" + escapeHtml(item.q) + "</h2>" +
           '<div class="opt-list" id="opt-list">' + optsHtml + "</div>" +
-          '<p class="hint" id="hint"></p>' +
           '<div id="explain-slot"></div>' +
         "</div></div>" +
       "</div>"
     ));
 
     var optButtons = Array.prototype.slice.call(document.querySelectorAll("#opt-list .opt"));
-    var hint = document.getElementById("hint");
 
     if (isAnswered) {
-      showAnswered();
+      showAnswered(picked);
     }
 
     optButtons.forEach(function (btn) {
       btn.addEventListener("click", function () {
-        if (state.answered[idx]) return;
+        if (isAnswered) return;
         var i = Number(btn.getAttribute("data-i"));
-        if (i === item.correct) {
-          state.answered[idx] = true;
-          saveDraft();
-          showAnswered();
-        } else {
-          btn.classList.add("wrong");
-          hint.textContent = "다시 한 번 골라보세요.";
-          setTimeout(function () { btn.classList.remove("wrong"); }, 500);
-        }
+        state.answered[idx] = i;
+        saveDraft();
+        showAnswered(i);
       });
     });
 
-    function showAnswered() {
+    function showAnswered(pickedIndex) {
       optButtons.forEach(function (btn, i) {
+        var tag = btn.querySelector(".opt-tag");
         if (i === item.correct) {
           btn.classList.add("correct");
+          tag.textContent = "정답!";
+        } else if (i === pickedIndex) {
+          btn.classList.add("wrong");
+          tag.textContent = "오답!";
         } else {
           btn.classList.add("dim");
         }
       });
-      hint.textContent = "";
       var slot = document.getElementById("explain-slot");
       var isLast = idx === QUESTIONS.length - 1;
       slot.innerHTML =
-        '<div class="explain"><strong>정답 해설</strong>' + escapeHtml(item.explain) + "</div>" +
+        '<div class="explain"><strong>정답 해설</strong>' + item.explain + "</div>" +
         '<div class="btn-row"><button class="btn btn-primary" id="btn-next">' +
         (isLast ? "설문 시작하기" : "다음 문항") +
         "</button></div>";
@@ -262,8 +254,9 @@
         return '<label class="chip"><input type="radio" name="' + f.key + '" value="' + escapeHtml(opt) + '"' + checked + "><span>" + escapeHtml(opt) + "</span></label>";
       }).join("");
       return '<div class="field" data-key="' + f.key + '">' +
-        "<label>" + escapeHtml(f.label) + "</label>" +
+        "<label>" + escapeHtml(f.label) + (f.required ? '<span class="req">*</span>' : "") + "</label>" +
         '<div class="chip-group">' + chips + "</div>" +
+        '<div class="err">하나를 선택해 주세요.</div>' +
       "</div>";
     }
     if (f.type === "checkbox") {
@@ -273,8 +266,9 @@
         return '<label class="chip"><input type="checkbox" data-group="' + f.key + '" value="' + escapeHtml(opt) + '"' + checked + "><span>" + escapeHtml(opt) + "</span></label>";
       }).join("");
       return '<div class="field" data-key="' + f.key + '">' +
-        "<label>" + escapeHtml(f.label) + "</label>" +
+        "<label>" + escapeHtml(f.label) + (f.required ? '<span class="req">*</span>' : "") + "</label>" +
         '<div class="chip-group">' + boxes + "</div>" +
+        '<div class="err">최소 하나를 선택해 주세요.</div>' +
       "</div>";
     }
     return "";
@@ -402,7 +396,8 @@
     sendRecord(record, 0).then(function () {
       state.screen = "thanks";
       render();
-    }).catch(function () {
+    }).catch(function (err) {
+      console.error("mkiscore quiz: failed to save to Google Sheets", err);
       var failed = getFailedSubmissions();
       failed.push(record);
       setFailedSubmissions(failed);
