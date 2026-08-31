@@ -38,24 +38,15 @@
     {
       title: "기본 정보",
       fields: [
-        { key: "company", label: "소속 회사", type: "text", required: true },
+        { key: "company", label: "회사명", type: "text", required: true },
         { key: "name", label: "성함", type: "text", required: true },
-        { key: "email", label: "이메일", type: "email", required: true, ph: "회사 이메일 주소 입력 부탁드립니다." },
+        { key: "email", label: "이메일", type: "email", required: true, ph: "회사 이메일 주소를 입력해 주세요." },
         { key: "role", label: "담당 업무", type: "text", required: true },
         { key: "department", label: "부서", type: "text", required: true },
         { key: "title", label: "직책", type: "text", required: true },
-        { key: "phone", label: "휴대전화번호", type: "tel", required: true, ph: "010-1234-5678 형식으로 입력 부탁드립니다." }
-      ]
-    },
-    {
-      title: "회사 프로필",
-      fields: [
-        { key: "decisionAuthority", label: "의사결정권한", type: "radio", required: true,
-          options: ["CFO, CEO, COO, CTO", "예산집행 담당", "타부서 리더(팀장급)", "구매부서 팀원", "해당 없음"] },
+        { key: "phone", label: "휴대전화번호", type: "tel", required: true, ph: "01012345678 형식으로 숫자만 입력해 주세요." },
         { key: "companySize", label: "회사 규모", type: "radio", required: true,
-          options: ["대기업", "중견/중소기업", "스타트업"] },
-        { key: "itBudget", label: "연간 IT 구매 예산 규모", type: "radio", required: true,
-          options: ["100억 원 이상", "50억 원 이상", "30억 원 이상", "20억 원 이상", "10억 원 이상", "5억 원 이상", "3억 원 미만", "1억 원 미만", "모름 또는 없음"] }
+          options: ["대기업", "중견/중소기업", "스타트업"] }
       ]
     },
     {
@@ -68,13 +59,22 @@
       ]
     },
     {
+      title: "회사 프로필",
+      fields: [
+        { key: "itBudget", label: "연간 IT 구매 예산 규모", type: "radio", required: true,
+          options: ["100억 원 이상", "50억 원 이상", "30억 원 이상", "20억 원 이상", "10억 원 이상", "5억 원 이상", "3억 원 미만", "1억 원 미만", "모름 또는 없음"] },
+        { key: "decisionAuthority", label: "의사결정 권한", type: "radio", required: true,
+          options: ["CFO, CEO, COO, CTO", "예산집행 담당", "타부서 리더(팀장급)", "구매부서 팀원", "해당 없음"] }
+      ]
+    },
+    {
       title: "도입 계획",
       fields: [
-        { key: "adoptionIntent", label: "도입의사", type: "radio", required: true,
-          options: ["도입의사 있음", "도입의사 없음", "도입 검토중 (구매부서 협의 전)", "미확정 (정보확인 목적)", "미확정 (사전조사 목적)"] },
+        { key: "adoptionIntent", label: "도입 의사", type: "radio", required: true,
+          options: ["도입 의사 있음", "도입 의사 없음", "도입 검토중 (구매부서 협의 전)", "미확정 (정보확인 목적)", "미확정 (사전조사 목적)"] },
         { key: "adoptionTimeline", label: "도입 시점", type: "radio", required: true,
           options: ["1~2개월 이내 (긴급도입)", "3개월 이내", "6개월 이내", "1년 이내", "1년 이후", "미정", "계획없음"] },
-        { key: "consult", label: "추후 엠키스코어 영업으로부터 상담을 희망하십니까?", type: "radio", required: true,
+        { key: "consult", label: "엠키스코어 영업팀의 상담을 받아보시겠어요?", type: "radio", required: true,
           options: ["예", "아니오"] }
       ]
     }
