@@ -377,11 +377,33 @@
     return ok;
   }
 
+  function buildQuizAnswers() {
+    return QUESTIONS.map(function (item, i) {
+      var picked = state.answered[i];
+      var hasPick = picked !== false && picked !== undefined && picked !== null;
+      if (!hasPick) return "";
+      var isCorrect = picked === item.correct;
+      return item.options[picked] + " (" + (isCorrect ? "정답" : "오답") + ")";
+    });
+  }
+
+  function buildQuizScore() {
+    var correct = QUESTIONS.filter(function (item, i) { return state.answered[i] === item.correct; }).length;
+    return correct + "/" + QUESTIONS.length;
+  }
+
   function buildRecord() {
     var s = state.survey;
+    var quizAnswers = buildQuizAnswers();
     return {
       id: uid(),
       submittedAt: formatKst(new Date()),
+      quiz1: quizAnswers[0] || "",
+      quiz2: quizAnswers[1] || "",
+      quiz3: quizAnswers[2] || "",
+      quiz4: quizAnswers[3] || "",
+      quiz5: quizAnswers[4] || "",
+      quizScore: buildQuizScore(),
       company: s.company || "",
       name: s.name || "",
       email: s.email || "",
